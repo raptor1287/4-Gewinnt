@@ -1,0 +1,468 @@
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.scene.control.*;
+import javafx.event.*;
+import je.fx.util.Turtle;
+import javafx.scene.canvas.*;
+import javafx.scene.shape.*;
+import javafx.scene.paint.*;
+
+/**
+ *
+ * Beschreibung
+ *
+ * @version 1.0 vom 02.12.2022
+ * @author 
+ */
+
+public class henryhilss4gewinnt extends Application {
+  // Anfang Attribute
+  private Button button1 = new Button();
+  private Button button2 = new Button();
+  private Button button3 = new Button();
+  private Button button4 = new Button();
+  private Button button5 = new Button();
+  private Button bStart = new Button();
+  private Turtle turtle1 = new Turtle();
+  private Label lSpieler1 = new Label();
+  private Label lSpieler2 = new Label();
+  private TextField textField2 = new TextField();
+  private TextField textField3 = new TextField();
+  int Spieler = 0;
+  int button =0;
+  int welchespalte = 0;
+  int welchereihe = 0;
+  private Pane pane1 = new Pane();
+  private Button button6 = new Button();
+  private Button bEnter = new Button();
+  private TextArea textArea1 = new TextArea();
+  int[] spalte = new int[7];
+  int[] reihe = new int[7];
+  int spalte1[] = new int[6];
+  int spalte2[] = new int[6];
+  int spalte3[] = new int[6];
+  int spalte4[] = new int[6];
+  int spalte5[] = new int[6];
+  int spalte6[] = new int[6];
+  
+  
+  //boolean gwon = false;
+  int[][] gg = new int[6][7];
+  String name1;
+  String name2;  
+  int bob = 1;
+  int u = 0;
+  int p = 0;
+  int a = 0;
+  int s = 0;
+  int d = 0;
+  int f = 0;
+               
+ 
+ 
+  // Ende Attribute
+  
+  public void start(Stage primaryStage) { 
+    Pane root = new Pane();
+    Scene scene = new Scene(root, 921, 628);
+    // Anfang Komponenten
+    
+    turtle1.setAnimated(true);
+    turtle1.setLayoutX(160);
+    turtle1.setLayoutY(72);
+    turtle1.setWidth(440);
+    turtle1.setHeight(520);
+    turtle1.setOriginX(220);
+    turtle1.setOriginY(260);
+    root.getChildren().add(turtle1);
+    button1.setLayoutX(160);
+    button1.setLayoutY(40);
+    button1.setPrefHeight(24);
+    button1.setPrefWidth(72);
+    button1.setOnAction(
+    (event) -> {button1_Action(event);} 
+    );
+    root.getChildren().add(button1);
+    button2.setLayoutX(232);
+    button2.setLayoutY(40);
+    button2.setPrefHeight(24);
+    button2.setPrefWidth(72);
+    button2.setOnAction(
+    (event) -> {button2_Action(event);} 
+    );
+    root.getChildren().add(button2);
+    button3.setLayoutX(304);
+    button3.setLayoutY(40);
+    button3.setPrefHeight(24);
+    button3.setPrefWidth(80);
+    button3.setOnAction(
+    (event) -> {button3_Action(event);} 
+    );
+    root.getChildren().add(button3);
+    button4.setLayoutX(384);
+    button4.setLayoutY(40);
+    button4.setPrefHeight(24);
+    button4.setPrefWidth(72);
+    button4.setOnAction(
+    (event) -> {button4_Action(event);} 
+    );
+    root.getChildren().add(button4);
+    button5.setLayoutX(456);
+    button5.setLayoutY(40);
+    button5.setPrefHeight(24);
+    button5.setPrefWidth(72);
+    button5.setOnAction(
+    (event) -> {button5_Action(event);} 
+    );
+    root.getChildren().add(button5);
+    bStart.setLayoutX(16);
+    bStart.setLayoutY(16);
+    bStart.setPrefHeight(24);
+    bStart.setPrefWidth(80);
+    bStart.setOnAction(
+    (event) -> {bStart_Action(event);} 
+    );
+    bStart.setText("Start");
+    root.getChildren().add(bStart);
+    textField2.setLayoutX(32);
+    textField2.setLayoutY(120);
+    textField2.setPrefHeight(24);
+    textField2.setPrefWidth(80);
+    root.getChildren().add(textField2);
+    lSpieler1.setLayoutX(32);
+    lSpieler1.setLayoutY(96);
+    lSpieler1.setPrefHeight(24);
+    lSpieler1.setPrefWidth(80);
+    lSpieler1.setText("Spieler 1");
+    root.getChildren().add(lSpieler1);
+    textField3.setLayoutX(32);
+    textField3.setLayoutY(184);
+    textField3.setPrefHeight(24);
+    textField3.setPrefWidth(80);
+    root.getChildren().add(textField3);
+    lSpieler2.setLayoutX(32);
+    lSpieler2.setLayoutY(160);
+    lSpieler2.setPrefHeight(24);
+    lSpieler2.setPrefWidth(80);
+    lSpieler2.setText("Spieler 2");
+    root.getChildren().add(lSpieler2);
+    pane1.setLayoutX(696);
+    pane1.setLayoutY(240);
+    pane1.setPrefHeight(1);
+    pane1.setPrefWidth(9);
+    root.getChildren().add(pane1);
+    button6.setLayoutX(528);
+    button6.setLayoutY(40);
+    button6.setPrefHeight(24);
+    button6.setPrefWidth(72);
+    button6.setOnAction(
+    (event) -> {button6_Action(event);} 
+    );
+    root.getChildren().add(button6);
+    bEnter.setLayoutX(40);
+    bEnter.setLayoutY(224);
+    bEnter.setPrefHeight(24);
+    bEnter.setPrefWidth(48);
+    bEnter.setOnAction(
+    (event) -> {bEnter_Action(event);} 
+    );
+    bEnter.setText("enter");
+    root.getChildren().add(bEnter);
+    textArea1.setLayoutX(632);
+    textArea1.setLayoutY(120);
+    textArea1.setPrefHeight(104);
+    textArea1.setPrefWidth(256);
+    root.getChildren().add(textArea1);
+    // Ende Komponenten
+    
+    
+    // Ende Komponenten
+    
+    primaryStage.setOnCloseRequest(e -> System.exit(0));
+    primaryStage.setTitle("henryhilss4gewinnt");
+    primaryStage.setScene(scene);
+    primaryStage.show();
+  } // end of public henryhilss4gewinnt
+  
+  // Anfang Methoden
+  
+  public static void main(String[] args) {
+    launch(args);
+  } // end of main
+  
+  public void Kreis() {
+    turtle1.turnto(0);
+    turtle1.moveto(-185 + (74*button),-252 + (75*spalte[button]));//+(74*reihe[button]),-252);//+(73*spalte[button]));
+    for (int i = 0; i < 184; i++) {
+      turtle1.draw(1);
+      turtle1.turn(2);
+    } 
+    turtle1.turnto(0);
+    //Durchmesser 57
+  }
+  
+  public void Kreuz() {
+    turtle1.moveto(-220+(74*button),-260+(75*spalte[button]));
+    turtle1.turn(46);
+    turtle1.draw(103);
+    turtle1.moveto(-220+(74*button),-186+(75*spalte[button]));
+    turtle1.turn(-92);
+    turtle1.draw(103);                   
+    
+  }
+  
+  public boolean gwon() {  //Überprüfe ob ein Spieler gewonnen hat
+    boolean gwon = false;
+    try {
+      for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 5; j++) {
+          if (gg[i][j] == gg[i+1][j] && gg[i+1][j] == gg[i+2][j] && gg[i+2][j] == gg[i+3][j] && gg[i+3][j] != 0) {
+            gwon = true;
+          } // end of if
+        }
+      }
+      for (int x = 0; x < 6; x++) {
+        for (int y = 0; y < 2; y++) {
+          if (gg[y][x] == gg[y][x+1] && gg[y][x+1] == gg[y][x+2] && gg[y][x+2] == gg[y][x+3] && gg[y][x+3]!= 0) {
+            gwon = true;
+          } // end of if
+        }
+      }
+      for (int c = 0; c < 4; c++) {
+        for (int v = 0; v < 3; v++) {
+          if (gg[c][v] == gg[c+1][v+1] && gg[c+1][v+1] == gg[c+2][v+2] && gg[c+2][v+2] == gg[c+3][v+3] && gg[c+3][v+3]!= 0) {
+            gwon = true;
+          } // end of if
+        }
+      }
+      for (int b = 3; b < 9; b++) {
+        for (int n = 0; n < 2; n++) {
+          if (gg[b][n] == gg[b-1][n+1] && gg[b-1][n+1] == gg[b-2][n+2] && gg[b-2][n+2] == gg[b-3][n+3] && gg[b-3][n+3]!= 0) {
+            gwon = true;
+          } // end of if
+        }
+      }
+      if (gwon == true) {
+        textArea1.setText("Das Spiel ist zu Ende!");
+      } // end of if
+      } catch(Exception e) {
+    
+      } finally {
+    
+    }  //end of try
+    return gwon;
+  }
+  
+  public void won(){
+    if (gwon() == true) {
+      textArea1.setText("Das Spiel ist zu Ende!");
+      button1.setVisible(false);
+      button2.setVisible(false);
+      button3.setVisible(false);
+      button4.setVisible(false);
+      button5.setVisible(false);
+      button6.setVisible(false);
+    } // end of if
+    
+    
+    
+  }
+  
+  public void button1_Action(Event evt) {   //Setze Symbol in die erste Spalte auf das unterste freie Feld
+    // TODO hier Quelltext einfügen
+    if (spalte[0] <= 6) {
+      button= 0; 
+      if (Spieler == 0) {
+        Kreis();
+        Spieler = 1;
+        textArea1.setText("Spieler "+ name2 + " ist an der Reihe!\nDruecke den Button ueber der Spalte,\nin der du deinen Stein platzieren willst.");
+        gg[0][u] = 1;
+        won();
+        
+      } else {
+        Kreuz();
+        Spieler = 0;
+        textArea1.setText("Spieler "+ name1 + " ist an der Reihe!\nDruecke den Button ueber der Spalte,\nin der du deinen Stein platzieren willst.");
+        gg[0][u] = 2;
+        won();
+      } // end of if-else
+      spalte[0] = spalte[0] +1;
+      u++;
+    } else {
+      textArea1.setText("Diese Spalte ist voll!\nVersuche es erneut");
+    } // end of if-else
+    gwon();
+  } // end of button1_Action
+
+  public void button2_Action(Event evt) {    //Setze Symbol in die erste Spalte auf das unterste freie Feld
+    // TODO hier Quelltext einfügen
+    if (spalte[1] <= 6) {
+      button= 1; 
+      if (Spieler == 0) {
+        Kreis();
+        Spieler = 1;
+        textArea1.setText("Spieler "+ name2 + " ist an der Reihe!\nDruecke den Button ueber der Spalte,\nin der du deinen Stein platzieren willst.");
+        gg[1][p] = 1;
+        won();
+      } else {
+        Kreuz();
+        Spieler = 0;
+        textArea1.setText("Spieler "+ name1 + " ist an der Reihe!\nDruecke den Button ueber der Spalte,\nin der du deinen Stein platzieren willst.");
+        gg[1][p] = 2;
+        won();
+      } // end of if-else
+      spalte[1] = spalte[1] +1;
+      p++;
+    } else {
+      textArea1.setText("Diese Spalte ist voll!\nVersuche es erneut");
+    } // end of if-else
+    gwon();
+  } // end of button2_Action
+
+  public void button3_Action(Event evt) {
+    // TODO hier Quelltext einfügen
+    if (spalte[2] <= 6) {
+      button= 2; 
+      if (Spieler == 0) {
+        Kreis();
+        Spieler = 1;
+        textArea1.setText("Spieler "+ name2 + " ist an der Reihe!\nDruecke den Button ueber der Spalte,\nin der du deinen Stein platzieren willst.");
+        gg[2][a] = 1;
+        won();
+      } else {
+        Kreuz();
+        Spieler = 0;
+        textArea1.setText("Spieler "+ name1 + " ist an der Reihe!\nDruecke den Button ueber der Spalte,\nin der du deinen Stein platzieren willst.");
+        gg[2][a] = 2;
+        won();
+      } // end of if-else
+      spalte[2] = spalte[2] +1;
+      a++;
+    } else {
+      textArea1.setText("Diese Spalte ist voll!\nVersuche es erneut");
+    } // end of if-else
+     gwon();
+  } // end of button3_Action
+
+  public void button4_Action(Event evt) {
+    // TODO hier Quelltext einfügen
+    if (spalte[3] <= 6) {
+      button= 3; 
+      if (Spieler == 0) {
+        Kreis();
+        Spieler = 1;
+        textArea1.setText("Spieler "+ name2 + " ist an der Reihe!\nDruecke den Button ueber der Spalte,\nin der du deinen Stein platzieren willst.");
+        gg[3][s] = 1;
+        won();
+      } else {
+        Kreuz();
+        Spieler = 0;
+        textArea1.setText("Spieler "+ name1 + " ist an der Reihe!\nDruecke den Button ueber der Spalte,\nin der du deinen Stein platzieren willst.");
+        gg[3][s] = 2;
+        won();
+      } // end of if-else
+      spalte[3] = spalte[3] +1;
+      s++;
+    } else {
+      textArea1.setText("Diese Spalte ist voll!\nVersuche es erneut");
+    } // end of if-else
+     gwon();
+  } // end of button4_Action
+
+  public void button5_Action(Event evt) {
+    // TODO hier Quelltext einfügen
+    if (spalte[4] <= 6) {
+      button= 4; 
+      if (Spieler == 0) {
+        Kreis();
+        Spieler = 1;
+        textArea1.setText("Spieler "+ name2 + " ist an der Reihe!\nDruecke den Button ueber der Spalte,\nin der du deinen Stein platzieren willst.");
+        gg[4][d] = 1;
+        won();
+      } else {
+        Kreuz();
+        Spieler = 0;
+        textArea1.setText("Spieler "+ name1 + " ist an der Reihe!\nDruecke den Button ueber der Spalte,\nin der du deinen Stein platzieren willst.");
+        gg[4][d] = 2;
+        won();
+      } // end of if-else
+      spalte[4] = spalte[4] +1;
+      d++;
+    } else {
+      textArea1.setText("Diese Spalte ist voll!\nVersuche es erneut");
+    } // end of if-else
+    gwon();
+  } // end of button5_Action
+  
+  public void button6_Action(Event evt) {
+    // TODO hier Quelltext einfügen
+    if (spalte[5] <= 6) {
+      button= 5; 
+      if (Spieler == 0) {
+        Kreis();
+        Spieler = 1;
+        textArea1.setText("Spieler "+ name2 + " ist an der Reihe!\nDruecke den Button ueber der Spalte,\nin der du deinen Stein platzieren willst.");
+        gg[5][f] = 1;
+        won();
+      } else {
+        Kreuz();
+        Spieler = 0;
+        textArea1.setText("Spieler "+ name1 + " ist an der Reihe!\nDruecke den Button ueber der Spalte,\nin der du deinen Stein platzieren willst."); 
+        gg[5][f] = 2;
+        won();
+      } // end of if-else
+      spalte[5] = spalte[5] +1;
+      f++;
+    } else {
+      textArea1.setText("Diese Spalte ist voll!\nVersuche es erneut");
+    } // end of if-else
+    gwon();
+  } // end of button6_Action
+  
+  public void bStart_Action(Event evt) {
+    // TODO hier Quelltext einfügen
+    turtle1.clear();
+    turtle1.turnto(0);
+    turtle1.setAnimationspeed(10000);
+    turtle1.moveto(-220,186);
+    for (int i = 0; i < 4; i++) {
+      turtle1.draw(440);
+      turtle1.turn(270);
+      turtle1.move(74);
+      turtle1.turn(270);
+      turtle1.draw(440);
+      turtle1.turn(90);
+      turtle1.move(74);
+      turtle1.turn(90);
+    }
+    turtle1.moveto(-147,260);
+    for (int i = 0; i < 5; i++) {
+      turtle1.turn(270);
+      turtle1.draw(520);
+      turtle1.turn(90);
+      turtle1.move(73);
+      turtle1.turn(90);
+      turtle1.draw(520);
+      turtle1.turn(270);
+      turtle1.move(73);
+    }
+    textArea1.setText("Gebt eure Spielernamen unter Spieler 1 und\nSpieler 2 ein und bestaetigt mit enter.");
+    for (int i = 0; i < 5; i++) {
+      for (int j = 0; j < 6; j++) {
+        gg[i][j] = 0;
+      }
+    }
+  } // end of bStart_Action
+
+  public void bEnter_Action(Event evt) {
+    // TODO hier Quelltext einfügen
+    name1 = textField2.getText();
+    name2 = textField3.getText();
+    textArea1.setText("Spieler "+ name1 + " ist an der Reihe!\nDruecke den Button ueber der Spalte,\nin der du deinen Stein platzieren willst.");
+  } // end of bEnter_Action
+      
+  
+  // Ende Methoden
+} // end of class henryhilss4gewinnt
